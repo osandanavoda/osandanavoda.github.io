@@ -11,6 +11,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -25,16 +29,53 @@
             width: 100%;
             background: rgba(15, 15, 35, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1rem 5%;
+            padding: 1rem 3%;
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 3px 0;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
 
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: 2.5rem;
+            margin: 0;
         }
 
         nav a {
@@ -43,6 +84,7 @@
             font-weight: 500;
             transition: all 0.3s;
             position: relative;
+            font-size: 1rem;
         }
 
         nav a:after {
@@ -71,6 +113,7 @@
             color: white;
             position: relative;
             overflow: hidden;
+            padding: 2rem;
         }
 
         .hero::before {
@@ -106,16 +149,18 @@
             position: relative;
             z-index: 1;
             padding: 2rem;
+            max-width: 900px;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(2rem, 5vw, 4rem);
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
+            line-height: 1.2;
         }
 
         .hero .subtitle {
-            font-size: 1.5rem;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: fadeInUp 1s ease 0.2s backwards;
@@ -132,6 +177,7 @@
             transition: all 0.3s;
             animation: fadeInUp 1s ease 0.4s backwards;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
         .cta-button:hover {
@@ -158,7 +204,7 @@
         }
 
         h2 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 3rem;
             text-align: center;
             position: relative;
@@ -192,8 +238,10 @@
         }
 
         .profile-img {
-            width: 250px;
-            height: 250px;
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            aspect-ratio: 1;
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto;
@@ -201,8 +249,14 @@
             border: 5px solid white;
         }
 
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .about-text p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             margin-bottom: 1rem;
             line-height: 1.8;
         }
@@ -212,6 +266,7 @@
             position: relative;
             max-width: 800px;
             margin: 0 auto;
+            padding-left: 0;
         }
 
         .timeline::before {
@@ -257,24 +312,27 @@
         .timeline-content h3 {
             color: #667eea;
             margin-bottom: 0.5rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
         }
 
         .timeline-content h4 {
             color: #333;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
         }
 
         .duration {
             color: #764ba2;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: clamp(0.85rem, 1.5vw, 0.9rem);
             margin-bottom: 1rem;
         }
 
         .timeline-content p {
             color: #666;
             line-height: 1.7;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
 
         /* Education Section */
@@ -284,7 +342,7 @@
 
         .education-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             max-width: 900px;
             margin: 0 auto;
@@ -312,19 +370,21 @@
         .education-card h3 {
             color: #667eea;
             margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
         }
 
         .education-card h4 {
             color: #333;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
         }
 
         .edu-major {
             color: #666;
             font-style: italic;
             margin-bottom: 0.5rem;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
 
         .education-card .duration {
@@ -362,6 +422,11 @@
         .skill-card h3 {
             margin-bottom: 1rem;
             color: #667eea;
+            font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+        }
+
+        .skill-card p {
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
 
         /* Projects Section */
@@ -406,16 +471,19 @@
         .project-content h3 {
             margin-bottom: 1rem;
             color: #333;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
         }
 
         .project-content p {
             color: #666;
             margin-bottom: 1rem;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
 
         .project-links {
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .project-link {
@@ -440,11 +508,16 @@
             margin: 0 auto;
         }
 
+        .contact-content p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+        }
+
         .contact-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
         .contact-link {
@@ -480,26 +553,127 @@
             color: white;
             text-align: center;
             padding: 2rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
-        /* Responsive */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: rgba(15, 15, 35, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav a {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 2rem;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
             }
 
             .about-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
             }
 
-            nav ul {
-                gap: 1.5rem;
-                font-size: 0.9rem;
+            .profile-img {
+                max-width: 200px;
             }
 
             section {
                 padding: 3rem 5%;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item {
+                padding-left: 50px;
+            }
+
+            .timeline-dot {
+                left: -2px;
+                width: 23px;
+                height: 23px;
+            }
+
+            .timeline-content {
+                padding: 1.5rem;
+            }
+
+            .timeline-content:hover {
+                transform: translateX(5px);
+            }
+
+            .education-grid,
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            nav ul {
+                gap: 1.8rem;
+            }
+
+            nav a {
+                font-size: 0.95rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+
+            section {
+                padding: 6rem 5%;
             }
         }
     </style>
@@ -507,15 +681,22 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-container">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -532,8 +713,8 @@
         <h2>About Me</h2>
         <div class="about-content">
             <div class="profile-img">
-            <img src="./pro-pic.jpeg" alt="Osanda Navoda" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-        </div>
+                <img src="./pro-pic.jpeg" alt="Osanda Navoda">
+            </div>
             <div class="about-text">
                 <p>Motivated and enthusiastic graduate with a strong passion for development and innovation, possessing hands-on experience in diverse projects, including web, mobile, and application development. Dedicated to achieving high standards, skilled in problem solving, and highly effective in collaborative team environments.</p>
                 <p>Committed to applying my knowledge and skills in professional settings while continuously learning and contributing to impactful solutions. Actively seeking opportunities to make a meaningful impact in dynamic and challenging environments.</p>
@@ -623,7 +804,6 @@
                     <h3>Team Project (B) – Execution and Delivery (SIT378) | Nutrihelp Web Application</h3>
                     <p>Led the Nutrihelp frontend team, mentoring junior students and integrating project requirements to achieve team goals. Individually developed the Sign-In page using React, incorporating feedback from weekly sprints to deliver a functional, user-friendly web application.</p>
                     <div class="project-links">
-                      <!--  <a href="#" class="project-link">GitHub</a> -->
                     </div>
                 </div>
             </div>
@@ -633,7 +813,6 @@
                     <h3>Mobile Application Development (SIT305) | AI-powered Android Chatbot using Llama 2 LLM</h3>
                     <p>Completed an individual project in the Mobile Application Development (MAD) unit using Java for the frontend and Python for the backend. Designed an interactive UI and built a chatbot powered by Llama 2 for intelligent, responsive user interactions.</p>
                     <div class="project-links">
-                      <!--  <a href="#" class="project-link">GitHub</a> -->
                     </div>
                 </div>
             </div>
@@ -643,7 +822,7 @@
                     <h3>ITP Project</h3>
                     <p>Developed a web system for Nihon Agriculture Holding (PVT) LTD in an 8-member team using the MERN stack, featuring modules for suppliers, employees, HR, sales, and finance, with role-based login and data management.</p>
                     <div class="project-links">
-                        <a href="https://github.com/osandanavoda/2nd-Year-2nd-Sem-ITP-Project.git?trk=public_profile_project-button" class="project-link">GitHub</a>
+                        <a href="#" class="project-link">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -668,5 +847,33 @@
     <footer>
         <p>&copy; 2025 Osanda Navoda Dharmasiri. Built with ❤️ and hosted on GitHub Pages</p>
     </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
