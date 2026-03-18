@@ -979,65 +979,79 @@
     </button>
 
     <script>
-        // Dark Mode Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const moonIcon = themeToggle.querySelector('.theme-icon:first-child');
-        const sunIcon = themeToggle.querySelector('.theme-icon:last-child');
-
-        // Check for saved theme preference or default to light mode
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        
-        if (currentTheme === 'dark') {
-            body.classList.add('dark-mode');
-            moonIcon.classList.remove('show');
-            moonIcon.classList.add('hide');
-            sunIcon.classList.remove('hide');
-            sunIcon.classList.add('show');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
+        // Wait for DOM to fully load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dark Mode Toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
             
-            // Toggle icons with animation
-            if (body.classList.contains('dark-mode')) {
-                moonIcon.classList.remove('show');
-                moonIcon.classList.add('hide');
-                sunIcon.classList.remove('hide');
-                sunIcon.classList.add('show');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                sunIcon.classList.remove('show');
-                sunIcon.classList.add('hide');
-                moonIcon.classList.remove('hide');
-                moonIcon.classList.add('show');
-                localStorage.setItem('theme', 'light');
+            if (themeToggle) {
+                const moonIcon = themeToggle.querySelector('.theme-icon:first-child');
+                const sunIcon = themeToggle.querySelector('.theme-icon:last-child');
+
+                // Check for saved theme preference or default to light mode
+                const currentTheme = localStorage.getItem('theme') || 'light';
+                
+                if (currentTheme === 'dark') {
+                    body.classList.add('dark-mode');
+                    if (moonIcon && sunIcon) {
+                        moonIcon.classList.remove('show');
+                        moonIcon.classList.add('hide');
+                        sunIcon.classList.remove('hide');
+                        sunIcon.classList.add('show');
+                    }
+                }
+
+                themeToggle.addEventListener('click', function() {
+                    body.classList.toggle('dark-mode');
+                    
+                    // Toggle icons with animation
+                    if (body.classList.contains('dark-mode')) {
+                        if (moonIcon && sunIcon) {
+                            moonIcon.classList.remove('show');
+                            moonIcon.classList.add('hide');
+                            sunIcon.classList.remove('hide');
+                            sunIcon.classList.add('show');
+                        }
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        if (moonIcon && sunIcon) {
+                            sunIcon.classList.remove('show');
+                            sunIcon.classList.add('hide');
+                            moonIcon.classList.remove('hide');
+                            moonIcon.classList.add('show');
+                        }
+                        localStorage.setItem('theme', 'light');
+                    }
+                });
             }
-        });
 
-        // Hamburger menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+            // Hamburger menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
 
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
+                // Close menu when clicking on a link
+                const navLinks = document.querySelectorAll('nav a');
+                navLinks.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
             }
         });
     </script>
