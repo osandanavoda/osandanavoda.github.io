@@ -639,6 +639,183 @@
             background: linear-gradient(90deg, #a78bfa 0%, #c084fc 100%);
         }
 
+        /* Creative Projects Section */
+        .creative {
+            background: #f8f9fa;
+        }
+
+        .creative-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .creative-intro p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .creative-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .category-title::before {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .creative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .creative-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .creative-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .creative-thumbnail {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            overflow: hidden;
+            background: #000;
+        }
+
+        .creative-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .creative-card:hover .creative-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(102, 126, 234, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .play-overlay::after {
+            content: '▶';
+            font-size: 1.8rem;
+            color: white;
+            margin-left: 4px;
+        }
+
+        .creative-card:hover .play-overlay {
+            background: rgba(118, 75, 162, 0.95);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .creative-info {
+            padding: 1.5rem;
+        }
+
+        .creative-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .creative-caption {
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .creative-caption::before {
+            content: '📍';
+        }
+
+        /* Instagram specific styling */
+        .instagram-card .play-overlay {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .instagram-card:hover .play-overlay {
+            background: linear-gradient(45deg, #bc1888 0%, #cc2366 25%, #dc2743 50%, #e6683c 75%, #f09433 100%);
+        }
+
+        .instagram-card .play-overlay::after {
+            content: '📷';
+            font-size: 2rem;
+            margin-left: 0;
+        }
+
+        /* Dark mode for creative section */
+        body.dark-mode .creative {
+            background: #16213e;
+        }
+
+        body.dark-mode .creative-intro p {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .category-title {
+            color: #a78bfa;
+        }
+
+        body.dark-mode .creative-card {
+            background: #0f3460;
+        }
+
+        body.dark-mode .creative-title {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .creative-caption {
+            color: #b0b0b0;
+        }
+
         /* Projects Section */
         .projects {
             background: #f8f9fa;
@@ -1233,6 +1410,7 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#creative">Creative</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -1641,6 +1819,30 @@
         </div>
     </section>
 
+    <!-- Creative Projects Section -->
+    <section id="creative" class="creative">
+        <h2>Creative Projects</h2>
+        <div class="creative-intro">
+            <p>Beyond coding, I explore creativity through travel vlogs and photography. Capturing moments and telling stories through different mediums helps me see the world from new perspectives.</p>
+        </div>
+
+        <!-- YouTube Videos -->
+        <div class="creative-category">
+            <h3 class="category-title">🎥 Travel Vlogs</h3>
+            <div class="creative-grid" id="youtubeGrid">
+                <!-- YouTube videos will be added here dynamically or manually -->
+            </div>
+        </div>
+
+        <!-- Instagram Photos -->
+        <div class="creative-category">
+            <h3 class="category-title">📸 Photography</h3>
+            <div class="creative-grid" id="instagramGrid">
+                <!-- Instagram posts will be added here dynamically or manually -->
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact">
         <h2>Get In Touch</h2>
@@ -1921,6 +2123,124 @@
 
             // Initialize skill bars animation
             animateSkillBars();
+
+            // ========================================
+            // CREATIVE PROJECTS - YOUTUBE & INSTAGRAM
+            // ========================================
+            
+            /**
+             * YouTube Videos Data
+             * Replace with your actual YouTube video links and thumbnails
+             */
+            const youtubeVideos = [
+                {
+                    title: 'Exploring Sydney | Opera House, Ferry Ride & Harbour Bridge Train Views',
+                    thumbnail: 'https://img.youtube.com/vi/ou9g1iSK1bQ/maxresdefault.jpg', // Replace with your video ID
+                    videoUrl: 'https://youtu.be/ou9g1iSK1bQ?si=yd7mbFTLghS4xTwg', // Replace with your video URL
+                    location: 'Sydney, Australia'
+                },
+                {
+                    title: 'Flying Jetstar Melbourne to Sydney | Travel Vlog',
+                    thumbnail: 'https://img.youtube.com/vi/2ap3fd1LMmg/maxresdefault.jpg', // Replace with your video ID
+                    videoUrl: 'https://youtu.be/2ap3fd1LMmg?si=3zqIqFJSWejid13T', // Replace with your video URL
+                    location: 'Sydney, Australia'
+                }
+            ];
+
+            /**
+             * Instagram Posts Data
+             * Replace with your actual Instagram post links and image URLs
+             */
+            const instagramPosts = [
+                {
+                    title: 'Golden Hour at the Beach',
+                    thumbnail: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800', // Replace with your image URL
+                    postUrl: 'https://www.instagram.com/p/YOUR_POST_ID/', // Replace with your Instagram post URL
+                    location: 'St Kilda Beach'
+                },
+                {
+                    title: 'City Lights & Reflections',
+                    thumbnail: 'https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=800', // Replace with your image URL
+                    postUrl: 'https://www.instagram.com/p/YOUR_POST_ID/', // Replace with your Instagram post URL
+                    location: 'Melbourne CBD'
+                },
+                {
+                    title: 'Nature & Serenity',
+                    thumbnail: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800', // Replace with your image URL
+                    postUrl: 'https://www.instagram.com/p/YOUR_POST_ID/', // Replace with your Instagram post URL
+                    location: 'Dandenong Ranges'
+                },
+                {
+                    title: 'Urban Architecture',
+                    thumbnail: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800', // Replace with your image URL
+                    postUrl: 'https://www.instagram.com/p/YOUR_POST_ID/', // Replace with your Instagram post URL
+                    location: 'Melbourne'
+                },
+                {
+                    title: 'Sunset Vibes',
+                    thumbnail: 'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=800', // Replace with your image URL
+                    postUrl: 'https://www.instagram.com/p/YOUR_POST_ID/', // Replace with your Instagram post URL
+                    location: 'Brighton Beach'
+                },
+                {
+                    title: 'Coffee Culture',
+                    thumbnail: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800', // Replace with your image URL
+                    postUrl: 'https://www.instagram.com/p/YOUR_POST_ID/', // Replace with your Instagram post URL
+                    location: 'Fitzroy'
+                }
+            ];
+
+            /**
+             * Render YouTube video cards
+             */
+            function renderYouTubeVideos() {
+                const container = document.getElementById('youtubeGrid');
+                
+                if (!container) return;
+
+                const videosHTML = youtubeVideos.map(video => `
+                    <a href="${video.videoUrl}" target="_blank" rel="noopener noreferrer" class="creative-card">
+                        <div class="creative-thumbnail">
+                            <img src="${video.thumbnail}" alt="${video.title}" loading="lazy">
+                            <div class="play-overlay"></div>
+                        </div>
+                        <div class="creative-info">
+                            <h4 class="creative-title">${video.title}</h4>
+                            <p class="creative-caption">${video.location}</p>
+                        </div>
+                    </a>
+                `).join('');
+
+                container.innerHTML = videosHTML;
+            }
+
+            /**
+             * Render Instagram post cards
+             */
+            function renderInstagramPosts() {
+                const container = document.getElementById('instagramGrid');
+                
+                if (!container) return;
+
+                const postsHTML = instagramPosts.map(post => `
+                    <a href="${post.postUrl}" target="_blank" rel="noopener noreferrer" class="creative-card instagram-card">
+                        <div class="creative-thumbnail">
+                            <img src="${post.thumbnail}" alt="${post.title}" loading="lazy">
+                            <div class="play-overlay"></div>
+                        </div>
+                        <div class="creative-info">
+                            <h4 class="creative-title">${post.title}</h4>
+                            <p class="creative-caption">${post.location}</p>
+                        </div>
+                    </a>
+                `).join('');
+
+                container.innerHTML = postsHTML;
+            }
+
+            // Initialize creative projects
+            renderYouTubeVideos();
+            renderInstagramPosts();
 
             // ========================================
             // DARK MODE TOGGLE
