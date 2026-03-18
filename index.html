@@ -20,8 +20,109 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+ /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #1a1a2e;
+            color: #eee;
         }
 
+        body.dark-mode .about,
+        body.dark-mode .education,
+        body.dark-mode .projects {
+            background: #16213e;
+        }
+
+        body.dark-mode .skill-card,
+        body.dark-mode .project-card,
+        body.dark-mode .education-card,
+        body.dark-mode .timeline-content {
+            background: #0f3460;
+            color: #eee;
+        }
+
+        body.dark-mode .timeline-content h3,
+        body.dark-mode .skill-card h3,
+        body.dark-mode .education-card h3 {
+            color: #a78bfa;
+        }
+
+        body.dark-mode .timeline-content h4,
+        body.dark-mode .education-card h4,
+        body.dark-mode .project-content h3 {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .timeline-content p,
+        body.dark-mode .project-content p,
+        body.dark-mode .edu-major,
+        body.dark-mode .skill-card p {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .contact-link {
+            color: #eee;
+        }
+
+        body.dark-mode .contact-link:hover {
+            color: #a78bfa;
+        }
+
+        /* Dark Mode Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(102, 126, 234, 0.5);
+            z-index: 999;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1.8rem;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 35px rgba(102, 126, 234, 0.7);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        body.dark-mode .theme-toggle {
+            background: linear-gradient(135deg, #a78bfa 0%, #c084fc 100%);
+            box-shadow: 0 5px 25px rgba(167, 139, 250, 0.5);
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            box-shadow: 0 8px 35px rgba(167, 139, 250, 0.7);
+        }
+
+        .theme-icon {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .theme-toggle .theme-icon.hide {
+            transform: rotate(180deg) scale(0);
+            opacity: 0;
+            position: absolute;
+        }
+
+        .theme-toggle .theme-icon.show {
+            transform: rotate(0deg) scale(1);
+            opacity: 1;
+        }
+        
         /* Navbar */
         nav {
             position: fixed;
@@ -862,6 +963,49 @@
     <footer>
         <p>&copy; 2026 Osanda Navoda Dharmasiri.</p>
     </footer>
+    
+ <!-- Dark Mode Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="theme-icon show">🌙</span>
+        <span class="theme-icon hide">🌞</span>
+    </button>
+
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const moonIcon = themeToggle.querySelector('.theme-icon:first-child');
+        const sunIcon = themeToggle.querySelector('.theme-icon:last-child');
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            moonIcon.classList.remove('show');
+            moonIcon.classList.add('hide');
+            sunIcon.classList.remove('hide');
+            sunIcon.classList.add('show');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Toggle icons with animation
+            if (body.classList.contains('dark-mode')) {
+                moonIcon.classList.remove('show');
+                moonIcon.classList.add('hide');
+                sunIcon.classList.remove('hide');
+                sunIcon.classList.add('show');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                sunIcon.classList.remove('show');
+                sunIcon.classList.add('hide');
+                moonIcon.classList.remove('hide');
+                moonIcon.classList.add('show');
+                localStorage.setItem('theme', 'light');
+            }
+        });
 
     <script>
         // Hamburger menu toggle
