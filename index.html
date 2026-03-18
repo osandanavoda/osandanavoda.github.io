@@ -535,6 +535,162 @@
             background: #f8f9fa;
         }
 
+        /* Tab Navigation */
+        .projects-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Featured Projects Styles */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .featured-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .featured-content {
+            padding: 1.5rem;
+        }
+
+        .featured-content h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            line-height: 1.4;
+        }
+
+        .featured-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
+            line-height: 1.6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            padding: 0.6rem 1.5rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .project-link:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        body.dark-mode .tab-btn {
+            background: #0f3460;
+            border-color: #a78bfa;
+            color: #a78bfa;
+        }
+
+        body.dark-mode .tab-btn:hover {
+            background: #a78bfa;
+            color: white;
+        }
+
+        body.dark-mode .tab-btn.active {
+            background: linear-gradient(135deg, #a78bfa 0%, #c084fc 100%);
+            color: white;
+        }
+
+        body.dark-mode .featured-card {
+            background: #0f3460;
+        }
+
+        body.dark-mode .featured-content h3 {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .featured-content p {
+            color: #b0b0b0;
+        }
+
         .projects-header {
             display: flex;
             justify-content: space-between;
@@ -1084,19 +1240,64 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
-        <h2>GitHub Projects</h2>
-        <div class="projects-header">
-            <div class="projects-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="stars">Most Stars</button>
-                <button class="filter-btn" data-filter="recent">Recently Updated</button>
+        <h2>My Projects</h2>
+        
+        <!-- Tab Navigation -->
+        <div class="projects-tabs">
+            <button class="tab-btn active" data-tab="featured">Featured Projects</button>
+            <button class="tab-btn" data-tab="github">GitHub Repositories</button>
+        </div>
+
+        <!-- Featured Projects Tab -->
+        <div id="featured" class="tab-content active">
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="project-img">🚀</div>
+                    <div class="featured-content">
+                        <h3>Team Project (B) – Execution and Delivery (SIT378) | Nutrihelp Web Application</h3>
+                        <p>Led the Nutrihelp frontend team, mentoring junior students and integrating project requirements to achieve team goals. Individually developed the Sign-In page using React, incorporating feedback from weekly sprints to deliver a functional, user-friendly web application.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gopher-Industries/Nutrihelp-web" class="project-link" target="_blank">View on GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <div class="project-img">📱</div>
+                    <div class="featured-content">
+                        <h3>Mobile Application Development (SIT305) | AI-powered Android Chatbot using Llama 2 LLM</h3>
+                        <p>Completed an individual project in the Mobile Application Development (MAD) unit using Java for the frontend and Python for the backend. Designed an interactive UI and built a chatbot powered by Llama 2 for intelligent, responsive user interactions.</p>
+                        <div class="project-links">
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <div class="project-img">🎮</div>
+                    <div class="featured-content">
+                        <h3>ITP Project</h3>
+                        <p>Developed a web system for Nihon Agriculture Holding (PVT) LTD in an 8-member team using the MERN stack, featuring modules for suppliers, employees, HR, sales, and finance, with role-based login and data management.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/osandanavoda/2nd-Year-2nd-Sem-ITP-Project.git" class="project-link" target="_blank">View on GitHub →</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="projectsContainer" class="projects-grid">
-            <!-- Loading state -->
-            <div class="loading-container">
-                <div class="spinner"></div>
-                <p>Loading repositories...</p>
+
+        <!-- GitHub Projects Tab -->
+        <div id="github" class="tab-content">
+            <div class="projects-header">
+                <div class="projects-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="stars">Most Stars</button>
+                    <button class="filter-btn" data-filter="recent">Recently Updated</button>
+                </div>
+            </div>
+            <div id="projectsContainer" class="projects-grid">
+                <!-- Loading state -->
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <p>Loading repositories...</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1315,6 +1516,30 @@
             // Initialize GitHub projects
             fetchGitHubRepos();
             setupFilters();
+
+            // ========================================
+            // PROJECT TABS FUNCTIONALITY
+            // ========================================
+            function setupProjectTabs() {
+                const tabButtons = document.querySelectorAll('.tab-btn');
+                const tabContents = document.querySelectorAll('.tab-content');
+
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const targetTab = this.getAttribute('data-tab');
+
+                        // Remove active class from all buttons and contents
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        tabContents.forEach(content => content.classList.remove('active'));
+
+                        // Add active class to clicked button and corresponding content
+                        this.classList.add('active');
+                        document.getElementById(targetTab).classList.add('active');
+                    });
+                });
+            }
+
+            setupProjectTabs();
 
             // ========================================
             // DARK MODE TOGGLE
