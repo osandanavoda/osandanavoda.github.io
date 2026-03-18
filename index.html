@@ -535,10 +535,54 @@
             background: #f8f9fa;
         }
 
+        .projects-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .projects-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .projects-grid.loading {
+            opacity: 0.5;
         }
 
         .project-card {
@@ -547,6 +591,20 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .project-card:hover {
@@ -554,52 +612,159 @@
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
         }
 
-        .project-img {
-            width: 100%;
-            height: 200px;
+        .project-header {
+            padding: 1.5rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .project-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
+            gap: 0.5rem;
+        }
+
+        .project-header h3::before {
+            content: '📁';
+            font-size: 1.5rem;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .project-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
 
         .project-content {
             padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        .project-content h3 {
-            margin-bottom: 1rem;
-            color: #333;
-            font-size: clamp(1rem, 2.2vw, 1.2rem);
-        }
-
-        .project-content p {
+        .project-description {
             color: #666;
             margin-bottom: 1rem;
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
+            line-height: 1.6;
+            flex: 1;
+            font-size: 0.95rem;
         }
 
-        .project-links {
+        .project-footer {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
         }
 
-        .project-link {
-            padding: 0.5rem 1.5rem;
+        .language-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
+            background: #f0f0f0;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .language-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .github-link {
+            padding: 0.5rem 1.2rem;
             background: #667eea;
             color: white;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 20px;
             font-size: 0.9rem;
             transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
-        .project-link:hover {
+        .github-link:hover {
             background: #764ba2;
             transform: scale(1.05);
+        }
+
+        /* Loading State */
+        .loading-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Error State */
+        .error-container {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .error-container h3 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+        }
+
+        /* Empty State */
+        .empty-container {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        body.dark-mode .filter-btn {
+            background: #0f3460;
+            border-color: #a78bfa;
+            color: #a78bfa;
+        }
+
+        body.dark-mode .filter-btn:hover,
+        body.dark-mode .filter-btn.active {
+            background: #a78bfa;
+            color: white;
+        }
+
+        body.dark-mode .language-tag {
+            background: #1a1a2e;
+            color: #a78bfa;
+        }
+
+        body.dark-mode .project-footer {
+            border-top-color: #333;
         }
 
         /* Contact Section */
@@ -919,36 +1084,19 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
-        <h2>Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-img">🚀</div>
-                <div class="project-content">
-                    <h3>Team Project (B) – Execution and Delivery (SIT378) | Nutrihelp Web Application</h3>
-                    <p>Led the Nutrihelp frontend team, mentoring junior students and integrating project requirements to achieve team goals. Individually developed the Sign-In page using React, incorporating feedback from weekly sprints to deliver a functional, user-friendly web application.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/Gopher-Industries/Nutrihelp-web" class="project-link">GitHub</a>
-                    </div>
-                </div>
+        <h2>GitHub Projects</h2>
+        <div class="projects-header">
+            <div class="projects-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="stars">Most Stars</button>
+                <button class="filter-btn" data-filter="recent">Recently Updated</button>
             </div>
-            <div class="project-card">
-                <div class="project-img">📱</div>
-                <div class="project-content">
-                    <h3>Mobile Application Development (SIT305) | AI-powered Android Chatbot using Llama 2 LLM</h3>
-                    <p>Completed an individual project in the Mobile Application Development (MAD) unit using Java for the frontend and Python for the backend. Designed an interactive UI and built a chatbot powered by Llama 2 for intelligent, responsive user interactions.</p>
-                    <div class="project-links">
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-img">🎮</div>
-                <div class="project-content">
-                    <h3>ITP Project</h3>
-                    <p>Developed a web system for Nihon Agriculture Holding (PVT) LTD in an 8-member team using the MERN stack, featuring modules for suppliers, employees, HR, sales, and finance, with role-based login and data management.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/osandanavoda/2nd-Year-2nd-Sem-ITP-Project.git" class="project-link">GitHub</a>
-                    </div>
-                </div>
+        </div>
+        <div id="projectsContainer" class="projects-grid">
+            <!-- Loading state -->
+            <div class="loading-container">
+                <div class="spinner"></div>
+                <p>Loading repositories...</p>
             </div>
         </div>
     </section>
@@ -981,7 +1129,196 @@
     <script>
         // Wait for DOM to fully load
         document.addEventListener('DOMContentLoaded', function() {
-            // Dark Mode Toggle
+            // ========================================
+            // GITHUB PROJECTS FETCHER
+            // ========================================
+            const GITHUB_USERNAME = 'osandanavoda';
+            const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
+            
+            let allRepos = [];
+            let currentFilter = 'all';
+
+            // Language colors mapping
+            const languageColors = {
+                'JavaScript': '#f1e05a',
+                'Python': '#3572A5',
+                'Java': '#b07219',
+                'HTML': '#e34c26',
+                'CSS': '#563d7c',
+                'TypeScript': '#2b7489',
+                'React': '#61dafb',
+                'Vue': '#42b883',
+                'PHP': '#4F5D95',
+                'Ruby': '#701516',
+                'Go': '#00ADD8',
+                'Rust': '#dea584',
+                'C++': '#f34b7d',
+                'C': '#555555',
+                'C#': '#178600',
+                'Kotlin': '#A97BFF',
+                'Swift': '#ffac45',
+                'default': '#667eea'
+            };
+
+            /**
+             * Fetch repositories from GitHub API
+             */
+            async function fetchGitHubRepos() {
+                const container = document.getElementById('projectsContainer');
+                
+                try {
+                    // Show loading state
+                    container.innerHTML = `
+                        <div class="loading-container">
+                            <div class="spinner"></div>
+                            <p>Loading repositories...</p>
+                        </div>
+                    `;
+
+                    const response = await fetch(API_URL);
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch repositories');
+                    }
+
+                    const repos = await response.json();
+                    
+                    // Filter out forked repos and store all repos
+                    allRepos = repos.filter(repo => !repo.fork);
+                    
+                    if (allRepos.length === 0) {
+                        showEmptyState();
+                        return;
+                    }
+
+                    // Display repos with default filter
+                    displayRepos(allRepos);
+
+                } catch (error) {
+                    console.error('Error fetching GitHub repos:', error);
+                    showErrorState();
+                }
+            }
+
+            /**
+             * Display repositories based on current filter
+             */
+            function displayRepos(repos) {
+                const container = document.getElementById('projectsContainer');
+                
+                // Apply current filter
+                let filteredRepos = [...repos];
+                
+                if (currentFilter === 'stars') {
+                    // Sort by stars (descending) and take top 6
+                    filteredRepos = filteredRepos
+                        .sort((a, b) => b.stargazers_count - a.stargazers_count)
+                        .slice(0, 6);
+                } else if (currentFilter === 'recent') {
+                    // Sort by last updated (most recent first) and take top 6
+                    filteredRepos = filteredRepos
+                        .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+                        .slice(0, 6);
+                } else {
+                    // Show all repos, sorted by stars
+                    filteredRepos = filteredRepos
+                        .sort((a, b) => b.stargazers_count - a.stargazers_count);
+                }
+
+                // Generate HTML for each repo
+                const reposHTML = filteredRepos.map((repo, index) => {
+                    const language = repo.language || 'Unknown';
+                    const languageColor = languageColors[language] || languageColors['default'];
+                    const description = repo.description || 'No description available';
+                    const stars = repo.stargazers_count || 0;
+                    const forks = repo.forks_count || 0;
+                    
+                    return `
+                        <div class="project-card" style="animation-delay: ${index * 0.1}s">
+                            <div class="project-header">
+                                <h3>${repo.name}</h3>
+                                <div class="project-stats">
+                                    <span class="project-stat">⭐ ${stars}</span>
+                                    <span class="project-stat">🔱 ${forks}</span>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">${description}</p>
+                                <div class="project-footer">
+                                    <span class="language-tag">
+                                        <span class="language-dot" style="background: ${languageColor}"></span>
+                                        ${language}
+                                    </span>
+                                    <a href="${repo.html_url}" class="github-link" target="_blank">
+                                        View Code →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                container.innerHTML = reposHTML;
+            }
+
+            /**
+             * Show error state
+             */
+            function showErrorState() {
+                const container = document.getElementById('projectsContainer');
+                container.innerHTML = `
+                    <div class="error-container">
+                        <h3>⚠️ Oops! Something went wrong</h3>
+                        <p>Unable to load GitHub repositories. Please try again later.</p>
+                    </div>
+                `;
+            }
+
+            /**
+             * Show empty state
+             */
+            function showEmptyState() {
+                const container = document.getElementById('projectsContainer');
+                container.innerHTML = `
+                    <div class="empty-container">
+                        <h3>📭 No repositories found</h3>
+                        <p>No public repositories available at the moment.</p>
+                    </div>
+                `;
+            }
+
+            /**
+             * Handle filter button clicks
+             */
+            function setupFilters() {
+                const filterButtons = document.querySelectorAll('.filter-btn');
+                
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Remove active class from all buttons
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        this.classList.add('active');
+                        
+                        // Update current filter
+                        currentFilter = this.getAttribute('data-filter');
+                        
+                        // Re-display repos with new filter
+                        if (allRepos.length > 0) {
+                            displayRepos(allRepos);
+                        }
+                    });
+                });
+            }
+
+            // Initialize GitHub projects
+            fetchGitHubRepos();
+            setupFilters();
+
+            // ========================================
+            // DARK MODE TOGGLE
+            // ========================================
             const themeToggle = document.getElementById('themeToggle');
             const body = document.body;
             
