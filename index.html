@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Osanda Navoda - Portfolio</title>
-
+    
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/osandanavoda/osandanavoda.github.io/main/logo%201.jpg">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/osandanavoda/osandanavoda.github.io/main/logo%201.jpg">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Osanda Navoda Dharmasiri - Full Stack Developer | IT Graduate from Deakin University | Portfolio showcasing web development, mobile apps, and creative projects.">
+    <meta name="keywords" content="Osanda Navoda, Full Stack Developer, Web Developer, IT Graduate, Deakin University, Portfolio, React, Node.js, WordPress">
+    <meta name="author" content="Osanda Navoda Dharmasiri">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Osanda Navoda - Full Stack Developer Portfolio">
+    <meta property="og:description" content="Full Stack Developer | Problem Solver | IT Graduate - Explore my projects and creative work">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://osandanavoda.github.io/">
+    <meta property="og:image" content="https://raw.githubusercontent.com/osandanavoda/osandanavoda.github.io/main/logo%201.jpg">
     
     <style>
         * {
@@ -28,7 +40,7 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
         
- /* Dark Mode Styles */
+        /* Dark Mode Styles */
         body.dark-mode {
             background-color: #1a1a2e;
             color: #eee;
@@ -36,34 +48,43 @@
 
         body.dark-mode .about,
         body.dark-mode .education,
-        body.dark-mode .projects {
+        body.dark-mode .projects,
+        body.dark-mode .creative {
             background: #16213e;
         }
 
-        body.dark-mode .skill-card,
+        body.dark-mode .skill-category,
         body.dark-mode .project-card,
         body.dark-mode .education-card,
-        body.dark-mode .timeline-content {
+        body.dark-mode .timeline-content,
+        body.dark-mode .featured-card,
+        body.dark-mode .creative-card {
             background: #0f3460;
             color: #eee;
         }
 
         body.dark-mode .timeline-content h3,
-        body.dark-mode .skill-card h3,
-        body.dark-mode .education-card h3 {
+        body.dark-mode .skill-category h3,
+        body.dark-mode .education-card h3,
+        body.dark-mode .category-title {
             color: #a78bfa;
         }
 
         body.dark-mode .timeline-content h4,
         body.dark-mode .education-card h4,
-        body.dark-mode .project-content h3 {
+        body.dark-mode .project-content h3,
+        body.dark-mode .featured-content h3,
+        body.dark-mode .creative-title {
             color: #e0e0e0;
         }
 
         body.dark-mode .timeline-content p,
         body.dark-mode .project-content p,
+        body.dark-mode .featured-content p,
         body.dark-mode .edu-major,
-        body.dark-mode .skill-card p {
+        body.dark-mode .skill-name,
+        body.dark-mode .creative-intro p,
+        body.dark-mode .creative-caption {
             color: #b0b0b0;
         }
 
@@ -615,21 +636,8 @@
             width: var(--skill-width);
         }
 
-        /* Dark mode styles for skills */
-        body.dark-mode .skill-category {
-            background: #0f3460;
-        }
-
         body.dark-mode .category-header {
             border-bottom-color: #a78bfa;
-        }
-
-        body.dark-mode .category-header h3 {
-            color: #a78bfa;
-        }
-
-        body.dark-mode .skill-name {
-            color: #e0e0e0;
         }
 
         body.dark-mode .skill-percentage {
@@ -644,189 +652,11 @@
             background: linear-gradient(90deg, #a78bfa 0%, #c084fc 100%);
         }
 
-        /* Creative Projects Section */
-        .creative {
-            background: #f8f9fa;
-        }
-
-        .creative-intro {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-
-        .creative-intro p {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .creative-category {
-            margin-bottom: 4rem;
-        }
-
-        .category-title {
-            font-size: 1.8rem;
-            color: #667eea;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .category-title::before {
-            content: '';
-            width: 50px;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-        }
-
-        .creative-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .creative-card {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .creative-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-        }
-
-        .creative-thumbnail {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 aspect ratio */
-            overflow: hidden;
-            background: #000;
-        }
-
-        .creative-thumbnail img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .creative-card:hover .creative-thumbnail img {
-            transform: scale(1.1);
-        }
-
-        .play-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: rgba(102, 126, 234, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-
-        .play-overlay::after {
-            content: '▶';
-            font-size: 1.8rem;
-            color: white;
-            margin-left: 4px;
-        }
-
-        .creative-card:hover .play-overlay {
-            background: rgba(118, 75, 162, 0.95);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .creative-info {
-            padding: 1.5rem;
-        }
-
-        .creative-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .creative-caption {
-            font-size: 0.9rem;
-            color: #666;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .creative-caption::before {
-            content: '📍';
-        }
-
-        /* Instagram specific styling */
-        .instagram-card .play-overlay {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-        }
-
-        .instagram-card:hover .play-overlay {
-            background: linear-gradient(45deg, #bc1888 0%, #cc2366 25%, #dc2743 50%, #e6683c 75%, #f09433 100%);
-        }
-
-        .instagram-card .play-overlay::after {
-            content: '📷';
-            font-size: 2rem;
-            margin-left: 0;
-        }
-
-        /* Dark mode for creative section */
-        body.dark-mode .creative {
-            background: #16213e;
-        }
-
-        body.dark-mode .creative-intro p {
-            color: #b0b0b0;
-        }
-
-        body.dark-mode .category-title {
-            color: #a78bfa;
-        }
-
-        body.dark-mode .creative-card {
-            background: #0f3460;
-        }
-
-        body.dark-mode .creative-title {
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .creative-caption {
-            color: #b0b0b0;
-        }
-
         /* Projects Section */
         .projects {
             background: #f8f9fa;
         }
 
-        /* Tab Navigation */
         .projects-tabs {
             display: flex;
             justify-content: center;
@@ -880,7 +710,6 @@
             }
         }
 
-        /* Featured Projects Styles */
         .featured-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -970,18 +799,6 @@
             color: white;
         }
 
-        body.dark-mode .featured-card {
-            background: #0f3460;
-        }
-
-        body.dark-mode .featured-content h3 {
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .featured-content p {
-            color: #b0b0b0;
-        }
-
         .projects-header {
             display: flex;
             justify-content: space-between;
@@ -1041,17 +858,6 @@
             display: flex;
             flex-direction: column;
             animation: fadeInUp 0.6s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .project-card:hover {
@@ -1150,7 +956,6 @@
             transform: scale(1.05);
         }
 
-        /* Loading State */
         .loading-container {
             display: flex;
             justify-content: center;
@@ -1174,7 +979,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Error State */
         .error-container {
             text-align: center;
             padding: 3rem;
@@ -1186,7 +990,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Empty State */
         .empty-container {
             text-align: center;
             padding: 3rem;
@@ -1212,6 +1015,157 @@
 
         body.dark-mode .project-footer {
             border-top-color: #333;
+        }
+
+        /* Creative Projects Section */
+        .creative {
+            background: #f8f9fa;
+        }
+
+        .creative-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .creative-intro p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .creative-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .category-title::before {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .creative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .creative-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .creative-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .creative-thumbnail {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .creative-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .creative-card:hover .creative-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(102, 126, 234, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .play-overlay::after {
+            content: '▶';
+            font-size: 1.8rem;
+            color: white;
+            margin-left: 4px;
+        }
+
+        .creative-card:hover .play-overlay {
+            background: rgba(118, 75, 162, 0.95);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .creative-info {
+            padding: 1.5rem;
+        }
+
+        .creative-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .creative-caption {
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .creative-caption::before {
+            content: '📍';
+        }
+
+        .instagram-card .play-overlay {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .instagram-card:hover .play-overlay {
+            background: linear-gradient(45deg, #bc1888 0%, #cc2366 25%, #dc2743 50%, #e6683c 75%, #f09433 100%);
+        }
+
+        .instagram-card .play-overlay::after {
+            content: '📷';
+            font-size: 2rem;
+            margin-left: 0;
         }
 
         /* Contact Section */
@@ -1311,14 +1265,6 @@
                 padding: 6rem 1rem 2rem;
             }
 
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1rem;
-            }
-
             .about-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1360,8 +1306,10 @@
             }
 
             .education-grid,
-            .skills-grid,
-            .projects-grid {
+            .skills-container,
+            .projects-grid,
+            .featured-grid,
+            .creative-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1379,20 +1327,12 @@
                 font-size: 0.95rem;
             }
 
-            .hero h1 {
-                font-size: 3rem;
-            }
-
             section {
                 padding: 4rem 5%;
             }
         }
 
         @media (min-width: 1400px) {
-            .hero h1 {
-                font-size: 4.5rem;
-            }
-
             section {
                 padding: 6rem 5%;
             }
@@ -1435,7 +1375,7 @@
         <h2>About Me</h2>
         <div class="about-content">
             <div class="profile-img">
-                <img src="./pro-pic.jpeg" alt="Osanda Navoda">
+                <img src="./pro-pic.jpeg" alt="Osanda Navoda Dharmasiri - Full Stack Developer">
             </div>
             <div class="about-text">
                 <p>Motivated and enthusiastic graduate with a strong passion for development and innovation, possessing hands-on experience in diverse projects, including web, mobile, and application development. Dedicated to achieving high standards, skilled in problem solving, and highly effective in collaborative team environments.</p>
@@ -1472,7 +1412,7 @@
                     <h3>Software Engineer Intern</h3>
                     <h4>LinearSix</h4>
                     <p class="duration">Jul 2024 - Sep 2024 · Remote</p>
-                    <p>Effectively worked within an agile team environment, contributing to daily stand-ups, sprint planning, and retrospective meetings, ensuring timely delivery of project milestones. Identified and addressed complex technical issues by analyzing root causes, developing innovative solutions, and implementing effective fixes, which improved overall system performance and user experience. Delivered clear and actionable updates on project progress and technical issues through written reports and verbal presentations, ensuring all team members and stakeholders were informed and aligned on project objectives and changes.</p>
+                    <p>Effectively worked within an agile team environment, contributing to daily stand-ups, sprint planning, and retrospective meetings, ensuring timely delivery of project milestones. Identified and addressed complex technical issues by analyzing root causes, developing innovative solutions, and implementing effective fixes, which improved overall system performance and user experience.</p>
                 </div>
             </div>
         </div>
@@ -1776,17 +1716,17 @@
                 <div class="featured-card">
                     <div class="project-img">🚀</div>
                     <div class="featured-content">
-                        <h3>Team Project (B) – Execution and Delivery (SIT378) | Nutrihelp Web Application</h3>
+                        <h3>Nutrihelp Web Application</h3>
                         <p>Led the Nutrihelp frontend team, mentoring junior students and integrating project requirements to achieve team goals. Individually developed the Sign-In page using React, incorporating feedback from weekly sprints to deliver a functional, user-friendly web application.</p>
                         <div class="project-links">
-                            <a href="https://github.com/Gopher-Industries/Nutrihelp-web" class="project-link" target="_blank">View on GitHub →</a>
+                            <a href="https://github.com/Gopher-Industries/Nutrihelp-web" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
                         </div>
                     </div>
                 </div>
                 <div class="featured-card">
                     <div class="project-img">📱</div>
                     <div class="featured-content">
-                        <h3>Mobile Application Development (SIT305) | AI-powered Android Chatbot using Llama 2 LLM</h3>
+                        <h3>AI-powered Android Chatbot</h3>
                         <p>Completed an individual project in the Mobile Application Development (MAD) unit using Java for the frontend and Python for the backend. Designed an interactive UI and built a chatbot powered by Llama 2 for intelligent, responsive user interactions.</p>
                         <div class="project-links">
                         </div>
@@ -1795,10 +1735,10 @@
                 <div class="featured-card">
                     <div class="project-img">🎮</div>
                     <div class="featured-content">
-                        <h3>ITP Project</h3>
+                        <h3>Agriculture Management System</h3>
                         <p>Developed a web system for Nihon Agriculture Holding (PVT) LTD in an 8-member team using the MERN stack, featuring modules for suppliers, employees, HR, sales, and finance, with role-based login and data management.</p>
                         <div class="project-links">
-                            <a href="https://github.com/osandanavoda/2nd-Year-2nd-Sem-ITP-Project.git" class="project-link" target="_blank">View on GitHub →</a>
+                            <a href="https://github.com/osandanavoda/2nd-Year-2nd-Sem-ITP-Project.git" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
                         </div>
                     </div>
                 </div>
@@ -1815,7 +1755,6 @@
                 </div>
             </div>
             <div id="projectsContainer" class="projects-grid">
-                <!-- Loading state -->
                 <div class="loading-container">
                     <div class="spinner"></div>
                     <p>Loading repositories...</p>
@@ -1834,17 +1773,13 @@
         <!-- YouTube Videos -->
         <div class="creative-category">
             <h3 class="category-title">🎥 Travel Vlogs</h3>
-            <div class="creative-grid" id="youtubeGrid">
-                
-            </div>
+            <div class="creative-grid" id="youtubeGrid"></div>
         </div>
 
         <!-- Instagram Photos -->
         <div class="creative-category">
             <h3 class="category-title">📸 Photography</h3>
-            <div class="creative-grid" id="instagramGrid">
-                
-            </div>
+            <div class="creative-grid" id="instagramGrid"></div>
         </div>
     </section>
 
@@ -1854,7 +1789,7 @@
         <div class="contact-content">
             <p>I'm always open to new opportunities and collaborations. Feel free to reach out if you'd like to work together or just want to say hi!</p>
             <div class="contact-links">
-                <a href="https://www.linkedin.com/in/osandanavoda" class="contact-link" target="_blank">
+                <a href="https://www.linkedin.com/in/osandanavoda" class="contact-link" target="_blank" rel="noopener noreferrer">
                     <div class="contact-icon">💼</div>
                     <span>LinkedIn</span>
                 </a>
@@ -1864,7 +1799,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Osanda Navoda Dharmasiri.</p>
+        <p>&copy; 2026 Osanda Navoda Dharmasiri. Built with ❤️</p>
     </footer>
     
     <!-- Dark Mode Toggle Button -->
@@ -1874,18 +1809,14 @@
     </button>
 
     <script>
-        // Wait for DOM to fully load
         document.addEventListener('DOMContentLoaded', function() {
-            // ========================================
-            // GITHUB PROJECTS FETCHER
-            // ========================================
+            // GitHub Projects Fetcher
             const GITHUB_USERNAME = 'osandanavoda';
             const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
             
             let allRepos = [];
             let currentFilter = 'all';
 
-            // Language colors mapping
             const languageColors = {
                 'JavaScript': '#f1e05a',
                 'Python': '#3572A5',
@@ -1907,14 +1838,10 @@
                 'default': '#667eea'
             };
 
-            /**
-             * Fetch repositories from GitHub API
-             */
             async function fetchGitHubRepos() {
                 const container = document.getElementById('projectsContainer');
                 
                 try {
-                    // Show loading state
                     container.innerHTML = `
                         <div class="loading-container">
                             <div class="spinner"></div>
@@ -1929,8 +1856,6 @@
                     }
 
                     const repos = await response.json();
-                    
-                    // Filter out forked repos and store all repos
                     allRepos = repos.filter(repo => !repo.fork);
                     
                     if (allRepos.length === 0) {
@@ -1938,7 +1863,6 @@
                         return;
                     }
 
-                    // Display repos with default filter
                     displayRepos(allRepos);
 
                 } catch (error) {
@@ -1947,32 +1871,23 @@
                 }
             }
 
-            /**
-             * Display repositories based on current filter
-             */
             function displayRepos(repos) {
                 const container = document.getElementById('projectsContainer');
-                
-                // Apply current filter
                 let filteredRepos = [...repos];
                 
                 if (currentFilter === 'stars') {
-                    // Sort by stars (descending) and take top 6
                     filteredRepos = filteredRepos
                         .sort((a, b) => b.stargazers_count - a.stargazers_count)
                         .slice(0, 6);
                 } else if (currentFilter === 'recent') {
-                    // Sort by last updated (most recent first) and take top 6
                     filteredRepos = filteredRepos
                         .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
                         .slice(0, 6);
                 } else {
-                    // Show all repos, sorted by stars
                     filteredRepos = filteredRepos
                         .sort((a, b) => b.stargazers_count - a.stargazers_count);
                 }
 
-                // Generate HTML for each repo
                 const reposHTML = filteredRepos.map((repo, index) => {
                     const language = repo.language || 'Unknown';
                     const languageColor = languageColors[language] || languageColors['default'];
@@ -1996,7 +1911,7 @@
                                         <span class="language-dot" style="background: ${languageColor}"></span>
                                         ${language}
                                     </span>
-                                    <a href="${repo.html_url}" class="github-link" target="_blank">
+                                    <a href="${repo.html_url}" class="github-link" target="_blank" rel="noopener noreferrer">
                                         View Code →
                                     </a>
                                 </div>
@@ -2008,9 +1923,6 @@
                 container.innerHTML = reposHTML;
             }
 
-            /**
-             * Show error state
-             */
             function showErrorState() {
                 const container = document.getElementById('projectsContainer');
                 container.innerHTML = `
@@ -2021,9 +1933,6 @@
                 `;
             }
 
-            /**
-             * Show empty state
-             */
             function showEmptyState() {
                 const container = document.getElementById('projectsContainer');
                 container.innerHTML = `
@@ -2034,24 +1943,15 @@
                 `;
             }
 
-            /**
-             * Handle filter button clicks
-             */
             function setupFilters() {
                 const filterButtons = document.querySelectorAll('.filter-btn');
                 
                 filterButtons.forEach(button => {
                     button.addEventListener('click', function() {
-                        // Remove active class from all buttons
                         filterButtons.forEach(btn => btn.classList.remove('active'));
-                        
-                        // Add active class to clicked button
                         this.classList.add('active');
-                        
-                        // Update current filter
                         currentFilter = this.getAttribute('data-filter');
                         
-                        // Re-display repos with new filter
                         if (allRepos.length > 0) {
                             displayRepos(allRepos);
                         }
@@ -2059,13 +1959,10 @@
                 });
             }
 
-            // Initialize GitHub projects
             fetchGitHubRepos();
             setupFilters();
 
-            // ========================================
-            // PROJECT TABS FUNCTIONALITY
-            // ========================================
+            // Project Tabs
             function setupProjectTabs() {
                 const tabButtons = document.querySelectorAll('.tab-btn');
                 const tabContents = document.querySelectorAll('.tab-content');
@@ -2074,11 +1971,9 @@
                     button.addEventListener('click', function() {
                         const targetTab = this.getAttribute('data-tab');
 
-                        // Remove active class from all buttons and contents
                         tabButtons.forEach(btn => btn.classList.remove('active'));
                         tabContents.forEach(content => content.classList.remove('active'));
 
-                        // Add active class to clicked button and corresponding content
                         this.classList.add('active');
                         document.getElementById(targetTab).classList.add('active');
                     });
@@ -2087,18 +1982,12 @@
 
             setupProjectTabs();
 
-            // ========================================
-            // ANIMATED SKILL BARS
-            // ========================================
-            
-            /**
-             * Animate skill bars when they come into view
-             */
+            // Animated Skill Bars
             function animateSkillBars() {
                 const skillBars = document.querySelectorAll('.skill-bar');
                 
                 const observerOptions = {
-                    threshold: 0.5, // Trigger when 50% of element is visible
+                    threshold: 0.5,
                     rootMargin: '0px'
                 };
 
@@ -2108,82 +1997,59 @@
                             const skillBar = entry.target;
                             const skillLevel = skillBar.getAttribute('data-skill');
                             
-                            // Set CSS variable for width
                             skillBar.style.setProperty('--skill-width', skillLevel + '%');
-                            
-                            // Add animate class to trigger animation
                             skillBar.classList.add('animate');
-                            
-                            // Stop observing this element
                             observer.unobserve(skillBar);
                         }
                     });
                 }, observerOptions);
 
-                // Observe all skill bars
                 skillBars.forEach(bar => {
                     observer.observe(bar);
                 });
             }
 
-            // Initialize skill bars animation
             animateSkillBars();
 
-            // ========================================
-            // CREATIVE PROJECTS - YOUTUBE & INSTAGRAM
-            // ========================================
-            
-            /**
-             * YouTube Videos Data
-             
-             */
+            // Creative Projects
             const youtubeVideos = [
                 {
                     title: 'Exploring Sydney | Opera House, Ferry Ride & Harbour Bridge Train Views',
-                    thumbnail: 'https://img.youtube.com/vi/ou9g1iSK1bQ/maxresdefault.jpg', 
-                    videoUrl: 'https://youtu.be/ou9g1iSK1bQ?si=yd7mbFTLghS4xTwg', 
+                    thumbnail: 'https://img.youtube.com/vi/ou9g1iSK1bQ/maxresdefault.jpg',
+                    videoUrl: 'https://youtu.be/ou9g1iSK1bQ?si=yd7mbFTLghS4xTwg',
                     location: 'Sydney, Australia'
                 },
                 {
                     title: 'Flying Jetstar Melbourne to Sydney | Travel Vlog',
-                    thumbnail: 'https://img.youtube.com/vi/2ap3fd1LMmg/maxresdefault.jpg', 
-                    videoUrl: 'https://youtu.be/2ap3fd1LMmg?si=3zqIqFJSWejid13T', 
+                    thumbnail: 'https://img.youtube.com/vi/2ap3fd1LMmg/maxresdefault.jpg',
+                    videoUrl: 'https://youtu.be/2ap3fd1LMmg?si=3zqIqFJSWejid13T',
                     location: 'Sydney, Australia'
                 }
             ];
 
-            /**
-             * Instagram Posts Data
-             
-             */
             const instagramPosts = [
                 {
                     title: 'City Lights',
-                    thumbnail: 'https://osandanavoda.github.io/post%201.jpg', 
+                    thumbnail: 'https://raw.githubusercontent.com/osandanavoda/osandanavoda.github.io/main/post%201.jpg',
                     postUrl: 'https://www.instagram.com/osanda.navoda/p/C11-Q5NStIn/',
                     location: 'Melbourne, Australia'
                 },
                 {
                     title: 'Geelong Vibes',
-                    thumbnail: 'https://osandanavoda.github.io/post%202.jpg',
+                    thumbnail: 'https://raw.githubusercontent.com/osandanavoda/osandanavoda.github.io/main/post%202.jpg',
                     postUrl: 'https://www.instagram.com/osanda.navoda/p/C2erRGCypra/',
                     location: 'Geelong, Victoria, Australia'
                 },
                 {
                     title: 'Melb Arts',
-                    thumbnail: 'https://osandanavoda.github.io/post%203.jpg',
+                    thumbnail: 'https://raw.githubusercontent.com/osandanavoda/osandanavoda.github.io/main/post%203.jpg',
                     postUrl: 'https://www.instagram.com/osanda.navoda/p/C3SWjByvV07/',
                     location: 'Melbourne, Australia'
                 }
             ];
-                
 
-            /**
-             * Render YouTube video cards
-             */
             function renderYouTubeVideos() {
                 const container = document.getElementById('youtubeGrid');
-                
                 if (!container) return;
 
                 const videosHTML = youtubeVideos.map(video => `
@@ -2202,12 +2068,8 @@
                 container.innerHTML = videosHTML;
             }
 
-            /**
-             * Render Instagram post cards
-             */
             function renderInstagramPosts() {
                 const container = document.getElementById('instagramGrid');
-                
                 if (!container) return;
 
                 const postsHTML = instagramPosts.map(post => `
@@ -2226,13 +2088,10 @@
                 container.innerHTML = postsHTML;
             }
 
-            // Initialize creative projects
             renderYouTubeVideos();
             renderInstagramPosts();
 
-            // ========================================
-            // DARK MODE TOGGLE
-            // ========================================
+            // Dark Mode Toggle
             const themeToggle = document.getElementById('themeToggle');
             const body = document.body;
             
@@ -2240,7 +2099,6 @@
                 const moonIcon = themeToggle.querySelector('.theme-icon:first-child');
                 const sunIcon = themeToggle.querySelector('.theme-icon:last-child');
 
-                // Check for saved theme preference or default to light mode
                 const currentTheme = localStorage.getItem('theme') || 'light';
                 
                 if (currentTheme === 'dark') {
@@ -2256,7 +2114,6 @@
                 themeToggle.addEventListener('click', function() {
                     body.classList.toggle('dark-mode');
                     
-                    // Toggle icons with animation
                     if (body.classList.contains('dark-mode')) {
                         if (moonIcon && sunIcon) {
                             moonIcon.classList.remove('show');
@@ -2277,7 +2134,7 @@
                 });
             }
 
-            // Hamburger menu toggle
+            // Hamburger Menu
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('navMenu');
             
@@ -2287,7 +2144,6 @@
                     navMenu.classList.toggle('active');
                 });
 
-                // Close menu when clicking on a link
                 const navLinks = document.querySelectorAll('nav a');
                 navLinks.forEach(function(link) {
                     link.addEventListener('click', function() {
@@ -2296,7 +2152,6 @@
                     });
                 });
 
-                // Close menu when clicking outside
                 document.addEventListener('click', function(e) {
                     if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
                         hamburger.classList.remove('active');
